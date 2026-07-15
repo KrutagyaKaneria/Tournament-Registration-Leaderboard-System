@@ -3,6 +3,7 @@ const express = require('express');
 const sequelize = require('./src/config/database');
 require('./src/models');
 const healthRoutes = require('./src/routes/health');
+const playerRoutes = require('./src/routes/playerRoutes');
 const errorHandler = require('./src/middleware/errorHandler');
 
 const app = express();
@@ -11,6 +12,7 @@ const PORT = process.env.PORT || 5000;
 app.use(express.json());
 
 app.use(healthRoutes);
+app.use('/players', playerRoutes);
 
 app.use(errorHandler);
 

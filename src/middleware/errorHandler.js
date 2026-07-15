@@ -24,9 +24,12 @@ const errorHandler = (err, req, res, next) => {
   if (err instanceof UniqueConstraintError) {
     const messages = err.errors.map((e) => {
       const field = e.path || 'field';
+      if (field === 'email') {
+        return 'A player with this email already exists';
+      }
       return `${field} already exists`;
     });
-    return res.status(400).json({
+    return res.status(409).json({
       success: false,
       message: messages.join(', '),
     });
