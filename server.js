@@ -5,6 +5,7 @@ require('./src/models');
 const healthRoutes = require('./src/routes/health');
 const playerRoutes = require('./src/routes/playerRoutes');
 const tournamentRoutes = require('./src/routes/tournamentRoutes');
+const registrationRoutes = require('./src/routes/registrationRoutes');
 const errorHandler = require('./src/middleware/errorHandler');
 
 const app = express();
@@ -15,6 +16,7 @@ app.use(express.json());
 app.use(healthRoutes);
 app.use('/players', playerRoutes);
 app.use('/tournaments', tournamentRoutes);
+app.use('/tournaments/:id/register', registrationRoutes);
 
 app.use(errorHandler);
 
