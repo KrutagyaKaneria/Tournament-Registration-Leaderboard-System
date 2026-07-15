@@ -7,6 +7,7 @@ const playerRoutes = require('./src/routes/playerRoutes');
 const tournamentRoutes = require('./src/routes/tournamentRoutes');
 const registrationRoutes = require('./src/routes/registrationRoutes');
 const scoreRoutes = require('./src/routes/scoreRoutes');
+const leaderboardRoutes = require('./src/routes/leaderboardRoutes');
 const errorHandler = require('./src/middleware/errorHandler');
 
 const app = express();
@@ -19,6 +20,7 @@ app.use('/players', playerRoutes);
 app.use('/tournaments', tournamentRoutes);
 app.use('/tournaments/:id/register', registrationRoutes);
 app.use('/tournaments/:id/score', scoreRoutes);
+app.use('/tournaments/:id', leaderboardRoutes);
 
 app.use(errorHandler);
 
